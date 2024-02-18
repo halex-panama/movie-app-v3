@@ -14,7 +14,7 @@ const Trailer = ({ id }) => {
 
   return (
     <Wrapper>
-      <h1>Play Trailer</h1>
+      <h1>Play Video</h1>
       <Content>
         <YouTube className="video" opts={opts} videoId={id} />
       </Content>

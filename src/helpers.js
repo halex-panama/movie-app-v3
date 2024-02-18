@@ -26,6 +26,10 @@ export const formatReleaseDate = (date) => {
   return releaseDate;
 };
 
+export const randomArray = (length) => {
+  return Math.floor(Math.random() * length);
+};
+
 //session storage
 export const isPersistedState = (stateName) => {
   const sessionState = sessionStorage.getItem(stateName);

@@ -30,9 +30,9 @@ export const useMovieFetch = (movieId) => {
         const trailers = videos.results.filter(
           (video) =>
             video.site.toLowerCase() === "youtube" &&
-            video.type.toLowerCase() === "trailer" &&
-            video.type.toLowerCase() === "teaser" &&
-            video.type.toLowerCase() === "clip"
+            (video.type.toLowerCase() === "trailer" ||
+              video.type.toLowerCase() === "teaser" ||
+              video.type.toLowerCase() === "clip")
         );
 
         setState({

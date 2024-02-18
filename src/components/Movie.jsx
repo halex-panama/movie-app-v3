@@ -19,6 +19,9 @@ import { useMovieFetch } from "../hooks/useMovieFetch";
 //image
 import NoImage from "../images/no_image.png";
 
+//helpers
+import { randomArray } from "../helpers";
+
 const Movie = () => {
   const { movieId } = useParams();
 
@@ -26,6 +29,8 @@ const Movie = () => {
 
   if (loading) return <Spinner />;
   if (error) return <div>Something is wrong..</div>;
+
+  console.log(movie);
 
   return (
     <>
@@ -38,7 +43,7 @@ const Movie = () => {
       />
 
       {movie.trailers && movie.trailers.length > 0 ? (
-        <Trailer id={movie.trailers[0].key} />
+        <Trailer id={movie.trailers[randomArray(movie.trailers.length)].key} />
       ) : (
         <div>No Trailer Found</div>
       )}

@@ -18,19 +18,26 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 //images
 import NoImage from "../images/no_image.png";
 
+//helpers
+import { randomArray } from "../helpers";
+
 const Home = () => {
   const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } =
     useHomeFetch();
 
+  const randomNumber = randomArray(state.results.length);
+
   if (error) return <div>Something went wrong...</div>;
+
+  console.log(state.results);
 
   return (
     <>
-      {!searchTerm && state.results[0] ? (
+      {!searchTerm && state.results[randomNumber] ? (
         <HeroImage
-          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[0].backdrop_path}`}
-          title={state.results[0].title}
-          text={state.results[0].overview}
+          image={`${IMAGE_BASE_URL}${BACKDROP_SIZE}${state.results[randomNumber].backdrop_path}`}
+          title={state.results[randomNumber].title}
+          text={state.results[randomNumber].overview}
         />
       ) : null}
 
