@@ -29,8 +29,6 @@ const Home = () => {
 
   if (error) return <div>Something went wrong...</div>;
 
-  console.log(state.results);
-
   return (
     <>
       {!searchTerm && state.results[randomNumber] ? (

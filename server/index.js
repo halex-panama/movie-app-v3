@@ -1,6 +1,6 @@
 const express = require("express");
 const cors = require("cors");
-const fetch = require("node-fetch");
+const axios = require("axios");
 const url = require("url");
 require("dotenv").config();
 
@@ -14,7 +14,7 @@ app.use(cors());
 app.listen(PORT, () => console.log(`Server listening to PORT ${PORT}`));
 
 app.get("/", async (req, res) => {
-  res.json("success");
+  res.json("succes");
 });
 
 app.get("/popular", async (req, res) => {
@@ -25,10 +25,7 @@ app.get("/popular", async (req, res) => {
       ...url.parse(req.url, true).query,
     });
 
-    const response = await fetch(`${API_URL}movie/popular?${params}`);
-    const data = await response.json();
-
-    // http://localhost:8000/popular?page=1
+    const { data } = await axios.get(`${API_URL}movie/popular?${params}`);
 
     res.json(data);
   } catch (error) {
@@ -44,11 +41,8 @@ app.get("/search", async (req, res) => {
       ...url.parse(req.url, true).query,
     });
 
-    const response = await fetch(`
+    const { data } = await axios.get(`
     ${API_URL}search/movie?${params}`);
-    const data = await response.json();
-
-    // http://localhost:8000/search?query=america&page=2
 
     res.json(data);
   } catch (error) {
@@ -62,12 +56,9 @@ app.get("/info/:movieId", async (req, res) => {
       api_key: API_KEY,
     });
 
-    const response = await fetch(
+    const { data } = await axios.get(
       `${API_URL}movie/${req.params.movieId}?${params}`
     );
-    const data = await response.json();
-
-    // http://localhost:8000/info/787699
 
     res.json(data);
   } catch (error) {
@@ -81,12 +72,9 @@ app.get("/credits/:movieId", async (req, res) => {
       api_key: API_KEY,
     });
 
-    const response = await fetch(
+    const { data } = await axios.get(
       `${API_URL}movie/${req.params.movieId}/credits?${params}`
     );
-    const data = await response.json();
-
-    // http://localhost:8000/credits/787699
 
     res.json(data);
   } catch (error) {
@@ -100,12 +88,9 @@ app.get("/videos/:movieId", async (req, res) => {
       api_key: API_KEY,
     });
 
-    const response = await fetch(
+    const { data } = await axios.get(
       `${API_URL}movie/${req.params.movieId}/videos?${params}`
     );
-    const data = await response.json();
-
-    // http://localhost:8000/videos/787699
 
     res.json(data);
   } catch (error) {
