@@ -27,7 +27,8 @@ const Home = () => {
 
   const randomNumber = randomArray(state.results.length);
 
-  if (error) return <div>Something went wrong...</div>;
+  if (error)
+    return <div className="error-container">Please refresh the page...</div>;
 
   return (
     <>
