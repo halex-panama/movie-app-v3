@@ -1,4 +1,3 @@
-import React from "react";
 import YouTube from "react-youtube";
 import PropTypes from "prop-types";
 import { Content, Wrapper } from "./Trailer.styles";

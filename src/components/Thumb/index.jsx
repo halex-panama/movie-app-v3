@@ -1,7 +1,6 @@
-import React from "react";
 import { Link } from "react-router-dom";
-import PropTypes from "prop-types";
 import { formatReleaseDate } from "../../helpers";
+import PropTypes from "prop-types";
 
 //styles
 import { Image, Wrapper } from "./Thumb.styles";
