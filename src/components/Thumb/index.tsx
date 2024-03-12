@@ -1,18 +1,25 @@
 import { Link } from "react-router-dom";
 import { formatReleaseDate } from "../../helpers";
-import PropTypes from "prop-types";
 
 //styles
 import { Image, Wrapper } from "./Thumb.styles";
 
-const Thumb = ({ image, movieId, clickable, title, release }) => (
+type Props = {
+  image: string;
+  clickable: boolean;
+  movieId?: number;
+  title?: string;
+  release?: string;
+};
+
+const Thumb = ({ image, movieId, clickable, title, release }: Props) => (
   <div>
     {clickable ? (
       <Link className="link" to={`/${movieId}`}>
         <Wrapper>
           <Image src={image} alt="movie-thumb" />
           <h3>{title}</h3>
-          <p>{formatReleaseDate(release)}</p>
+          <p>{formatReleaseDate(release!)}</p>
         </Wrapper>
       </Link>
     ) : (
@@ -24,13 +31,5 @@ const Thumb = ({ image, movieId, clickable, title, release }) => (
     )}
   </div>
 );
-
-Thumb.propTypes = {
-  image: PropTypes.string,
-  movieId: PropTypes.number,
-  clickable: PropTypes.bool,
-  title: PropTypes.string,
-  release: PropTypes.string,
-};
 
 export default Thumb;

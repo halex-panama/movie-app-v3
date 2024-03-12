@@ -1,11 +1,17 @@
 import { useState, useEffect } from "react";
 
-import API from "../API";
+import API, { Movie, Cast, Crew, Video } from "../API";
 
 import { isPersistedState } from "../helpers";
 
-export const useMovieFetch = (movieId) => {
-  const [state, setState] = useState({});
+export type MovieState = Movie & {
+  actors: Cast[];
+  directors: Crew[];
+  trailers: Video[];
+};
+
+export const useMovieFetch = (movieId: string) => {
+  const [state, setState] = useState<MovieState>({} as MovieState);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
 

@@ -1,5 +1,3 @@
-import PropTypes from "prop-types";
-
 //components
 import Thumb from "../Thumb";
 
@@ -15,7 +13,14 @@ import { Wrapper, Content, Text } from "./MovieInfo.styles";
 //helpers
 import { formatRating } from "../../helpers";
 
-const MovieInfo = ({ movie }) => (
+//types
+import { MovieState } from "../../hooks/useMovieFetch";
+
+type Props = {
+  movie: MovieState;
+};
+
+const MovieInfo = ({ movie }: Props) => (
   <Wrapper backdrop={movie.backdrop_path}>
     <Content>
       <Thumb
@@ -56,9 +61,5 @@ const MovieInfo = ({ movie }) => (
     </Content>
   </Wrapper>
 );
-
-MovieInfo.propTypes = {
-  movie: PropTypes.object,
-};
 
 export default MovieInfo;

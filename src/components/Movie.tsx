@@ -24,7 +24,7 @@ import { randomArray } from "../helpers";
 const Movie = () => {
   const { movieId } = useParams();
 
-  const { state: movie, loading, error } = useMovieFetch(movieId);
+  const { state: movie, loading, error } = useMovieFetch(movieId!);
 
   if (loading) return <Spinner />;
   if (error) return <div>Something is wrong..</div>;

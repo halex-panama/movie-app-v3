@@ -1,8 +1,12 @@
 import YouTube from "react-youtube";
-import PropTypes from "prop-types";
+
 import { Content, Wrapper } from "./Trailer.styles";
 
-const Trailer = ({ id }) => {
+type Props = {
+  id: string;
+};
+
+const Trailer = ({ id }: Props) => {
   const opts = {
     width: "100%",
     height: "100%",
@@ -19,10 +23,6 @@ const Trailer = ({ id }) => {
       </Content>
     </Wrapper>
   );
-};
-
-Trailer.propTypes = {
-  id: PropTypes.string,
 };
 
 export default Trailer;

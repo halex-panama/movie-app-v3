@@ -1,18 +1,17 @@
-import React from "react";
-import PropTypes from "prop-types";
-
 //styles
+import { ReactNode } from "react";
 import { Wrapper, Content } from "./Grid.styles";
 
-const Grid = ({ header, children }) => (
+type Props = {
+  header: string;
+  children: ReactNode;
+};
+
+const Grid = ({ header, children }: Props) => (
   <Wrapper>
     <h1>{header}</h1>
     <Content>{children}</Content>
   </Wrapper>
 );
-
-Grid.propTypes = {
-  header: PropTypes.string,
-};
 
 export default Grid;
