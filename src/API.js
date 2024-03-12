@@ -1,20 +1,22 @@
+const BASE_URL = `https://movie-app-v3.vercel.app/`;
+
 const apiSettings = {
   fetchMovies: async (searchTerm, page) => {
     const endpoint = searchTerm
-      ? `https://movie-app-v3.vercel.app/search?query=${searchTerm}&page=${page}`
-      : `https://movie-app-v3.vercel.app/popular?page=${page}`;
+      ? `${BASE_URL}search?query=${searchTerm}&page=${page}`
+      : `${BASE_URL}popular?page=${page}`;
     return await (await fetch(endpoint)).json();
   },
   fetchMovie: async (movieId) => {
-    const endpoint = `https://movie-app-v3.vercel.app/info/${movieId}`;
+    const endpoint = `${BASE_URL}info/${movieId}`;
     return await (await fetch(endpoint)).json();
   },
   fetchCredits: async (movieId) => {
-    const creditsEndpoint = `https://movie-app-v3.vercel.app/credits/${movieId}`;
+    const creditsEndpoint = `${BASE_URL}credits/${movieId}`;
     return await (await fetch(creditsEndpoint)).json();
   },
   fetchVideos: async (movieId) => {
-    const videosEndpoint = `https://movie-app-v3.vercel.app/videos/${movieId}`;
+    const videosEndpoint = `${BASE_URL}videos/${movieId}`;
     return await (await fetch(videosEndpoint)).json();
   },
 };

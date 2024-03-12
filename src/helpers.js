@@ -17,7 +17,7 @@ export const convertMoney = (money) => {
 };
 
 export const formatRating = (rating) => {
-  const fixedRating = rating?.toFixed(1);
+  const fixedRating = rating.toFixed(1);
   return fixedRating;
 };
 
