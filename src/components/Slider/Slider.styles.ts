@@ -3,11 +3,6 @@ import styled from "styled-components";
 export const Content = styled.div`
   display: flex;
   justify-content: center;
-  margin: 0 2rem;
-
-  @media screen and (max-width: 768px) {
-    margin: 0 1.5rem;
-  }
 `;
 
 export const Wrapper = styled.div`

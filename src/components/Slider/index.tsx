@@ -25,6 +25,15 @@ const Slider = ({ header, movie }: Props) => {
             perPage: 5,
             width: 800,
             breakpoints: {
+              1500: {
+                width: 1200,
+              },
+              1280: {
+                width: 1000,
+              },
+              1024: {
+                width: 800,
+              },
               768: {
                 perPage: 3,
                 width: 500,
