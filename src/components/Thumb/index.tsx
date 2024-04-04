@@ -18,15 +18,15 @@ const Thumb = ({ image, movieId, clickable, title, release }: Props) => (
       <Link className="link" to={`/${movieId}`}>
         <Wrapper>
           <Image src={image} alt="movie-thumb" />
-          <h3>{title}</h3>
-          <p>{formatReleaseDate(release as string)}</p>
+          {title && <h3>{title}</h3>}
+          {release && <p>{formatReleaseDate(release as string)}</p>}
         </Wrapper>
       </Link>
     ) : (
       <Wrapper>
         <Image src={image} alt="movie-thumb" />
-        <h3>{title}</h3>
-        <p>{release}</p>
+        {title && <h3>{title}</h3>}
+        {release && <p>{formatReleaseDate(release as string)}</p>}
       </Wrapper>
     )}
   </div>

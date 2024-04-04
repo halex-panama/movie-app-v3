@@ -11,7 +11,6 @@ import MovieInfo from "./MovieInfo";
 import MovieInfoBar from "./MovieInfoBar";
 import Actor from "./Actor";
 import Trailer from "./Trailer";
-import Thumb from "./Thumb";
 
 //hooks
 import { useMovieFetch } from "../hooks/useMovieFetch";
@@ -66,7 +65,7 @@ const Movie = () => {
           ))}
       </Grid> */}
 
-      <Slider movie={movie.similar} />
+      <Slider header="Similar Movie" movie={movie.similar} />
 
       <Grid header="Cast">
         {movie.actors &&
