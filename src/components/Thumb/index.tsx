@@ -19,7 +19,7 @@ const Thumb = ({ image, movieId, clickable, title, release }: Props) => (
         <Wrapper>
           <Image src={image} alt="movie-thumb" />
           <h3>{title}</h3>
-          <p>{formatReleaseDate(release!)}</p>
+          <p>{formatReleaseDate(release as string)}</p>
         </Wrapper>
       </Link>
     ) : (

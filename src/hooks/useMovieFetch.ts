@@ -8,6 +8,7 @@ export type MovieState = Movie & {
   actors: Cast[];
   directors: Crew[];
   trailers: Video[];
+  similar: Movie[];
 };
 
 export const useMovieFetch = (movieId: string) => {
@@ -26,6 +27,8 @@ export const useMovieFetch = (movieId: string) => {
         const credits = await API.fetchCredits(movieId);
 
         const videos = await API.fetchVideos(movieId);
+
+        const similarMovie = await API.fetchSimilarMovie(movieId);
 
         //get directors
         const directors = credits.crew.filter(
@@ -46,6 +49,7 @@ export const useMovieFetch = (movieId: string) => {
           actors: credits.cast,
           directors,
           trailers,
+          similar: similarMovie.results,
         });
 
         setLoading(false);

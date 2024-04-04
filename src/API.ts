@@ -79,6 +79,10 @@ const apiSettings = {
     const videosEndpoint = `${BASE_URL}videos/${movieId}`;
     return await (await fetch(videosEndpoint)).json();
   },
+  fetchSimilarMovie: async (movieId: string): Promise<Movies> => {
+    const videosEndpoint = `${BASE_URL}similar/${movieId}`;
+    return await (await fetch(videosEndpoint)).json();
+  },
 };
 
 export default apiSettings;
