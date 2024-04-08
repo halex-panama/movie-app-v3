@@ -11,6 +11,7 @@ import MovieInfo from "./MovieInfo";
 import MovieInfoBar from "./MovieInfoBar";
 import Actor from "./Actor";
 import Trailer from "./Trailer";
+import Slider from "./Slider";
 
 //hooks
 import { useMovieFetch } from "../hooks/useMovieFetch";
@@ -19,8 +20,9 @@ import { useMovieFetch } from "../hooks/useMovieFetch";
 import NoImage from "../images/no_image.png";
 
 //helpers
-import { randomArray } from "../helpers";
-import Slider from "./Slider";
+import { fadeInThumbVariant, randomArray } from "../helpers";
+
+import { motion } from "framer-motion";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -70,17 +72,24 @@ const Movie = () => {
       <Grid header="Cast">
         {movie.actors &&
           movie.actors.length > 0 &&
-          movie.actors.map((actor) => (
-            <Actor
+          movie.actors.map((actor, index) => (
+            <motion.div
+              initial="initial"
+              whileInView="animate"
+              variants={fadeInThumbVariant}
+              custom={index}
               key={actor.credit_id}
-              name={actor.name}
-              character={actor.character}
-              imageUrl={
-                actor.profile_path
-                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                  : NoImage
-              }
-            />
+            >
+              <Actor
+                name={actor.name}
+                character={actor.character}
+                imageUrl={
+                  actor.profile_path
+                    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                    : NoImage
+                }
+              />
+            </motion.div>
           ))}
       </Grid>
     </>

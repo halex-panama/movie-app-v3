@@ -13,7 +13,7 @@ type Props = {
 };
 
 const Thumb = ({ image, movieId, clickable, title, release }: Props) => (
-  <div>
+  <>
     {clickable ? (
       <Link className="link" to={`/${movieId}`}>
         <Wrapper>
@@ -29,7 +29,7 @@ const Thumb = ({ image, movieId, clickable, title, release }: Props) => (
         {release && <p>{formatReleaseDate(release as string)}</p>}
       </Wrapper>
     )}
-  </div>
+  </>
 );
 
 export default Thumb;
