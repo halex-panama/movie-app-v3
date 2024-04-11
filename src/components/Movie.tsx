@@ -20,9 +20,7 @@ import { useMovieFetch } from "../hooks/useMovieFetch";
 import NoImage from "../images/no_image.png";
 
 //helpers
-import { fadeInThumbVariant, randomArray } from "../helpers";
-
-import { motion } from "framer-motion";
+import { randomArray } from "../helpers";
 
 const Movie = () => {
   const { movieId } = useParams();
@@ -73,23 +71,16 @@ const Movie = () => {
         {movie.actors &&
           movie.actors.length > 0 &&
           movie.actors.map((actor, index) => (
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              variants={fadeInThumbVariant}
-              custom={index}
-              key={actor.credit_id}
-            >
-              <Actor
-                name={actor.name}
-                character={actor.character}
-                imageUrl={
-                  actor.profile_path
-                    ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
-                    : NoImage
-                }
-              />
-            </motion.div>
+            <Actor
+              name={actor.name}
+              character={actor.character}
+              imageUrl={
+                actor.profile_path
+                  ? `${IMAGE_BASE_URL}${POSTER_SIZE}${actor.profile_path}`
+                  : NoImage
+              }
+              index={index}
+            />
           ))}
       </Grid>
     </>

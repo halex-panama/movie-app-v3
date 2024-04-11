@@ -17,9 +17,7 @@ import { useHomeFetch } from "../hooks/useHomeFetch";
 import NoImage from "../images/no_image.png";
 
 //helpers
-import { fadeInThumbVariant, randomArray } from "../helpers";
-
-import { motion } from "framer-motion";
+import { randomArray } from "../helpers";
 
 const Home = () => {
   const { state, loading, error, searchTerm, setSearchTerm, setIsLoadingMore } =
@@ -46,25 +44,18 @@ const Home = () => {
         {state.results &&
           state.results.length > 0 &&
           state.results.map((movie, index) => (
-            <motion.div
-              initial="initial"
-              whileInView="animate"
-              variants={fadeInThumbVariant}
-              custom={index}
-              key={movie.id}
-            >
-              <Thumb
-                clickable
-                image={
-                  movie.poster_path
-                    ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-                    : NoImage
-                }
-                movieId={movie.id}
-                title={movie.title}
-                release={movie.release_date}
-              />
-            </motion.div>
+            <Thumb
+              clickable
+              image={
+                movie.poster_path
+                  ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
+                  : NoImage
+              }
+              movieId={movie.id}
+              title={movie.title}
+              release={movie.release_date}
+              index={index}
+            />
           ))}
       </Grid>
 

@@ -1,14 +1,21 @@
 //styles
+import { fadeInThumbVariant } from "../../helpers";
 import { Wrapper, Image, Content } from "./Actor.styles";
 
 type Props = {
   name: string;
   character: string;
   imageUrl: string;
+  index: number;
 };
 
-const Actor = ({ name, character, imageUrl }: Props) => (
-  <Wrapper>
+const Actor = ({ name, character, imageUrl, index }: Props) => (
+  <Wrapper
+    initial="initial"
+    whileInView="animate"
+    variants={fadeInThumbVariant}
+    custom={index}
+  >
     <Image src={imageUrl} alt="actor-thumb" />
     <Content>
       <h3>{name}</h3>

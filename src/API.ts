@@ -62,8 +62,12 @@ export type Videos = {
 
 const apiSettings = {
   fetchMovies: async (searchTerm: string, page: number): Promise<Movies> => {
+    const searchParams = new URLSearchParams({
+      query: searchTerm,
+      page: page.toString(),
+    });
     const endpoint = searchTerm
-      ? `${BASE_URL}search?query=${searchTerm}&page=${page}`
+      ? `${BASE_URL}search?${searchParams}`
       : `${BASE_URL}popular?page=${page}`;
     return await (await fetch(endpoint)).json();
   },
