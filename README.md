@@ -37,5 +37,5 @@ Start the project on your local machine
     
 ## Screenshots
 
-![App Screenshot](https://i.ibb.co/ZYwLFsS/movie-app-v3.jpg)
+![App Screenshot](https://i.ibb.co/fq8rDjS/Movie-app-thumb.png)
 
