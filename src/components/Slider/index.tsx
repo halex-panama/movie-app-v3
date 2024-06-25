@@ -54,6 +54,7 @@ const Slider = ({ header, movie }: Props) => {
             movie.map((item) => (
               <SplideSlide key={item.id}>
                 <Thumb
+                  scale={0.975}
                   key={item.id}
                   clickable
                   image={

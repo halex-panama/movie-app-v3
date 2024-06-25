@@ -10,10 +10,21 @@ type Props = {
   movieId?: number;
   title?: string;
   release?: string;
-  index: number;
+  index?: number;
+  scale?: number;
+  height?: "22.5rem" | "auto";
 };
 
-const Thumb = ({ image, movieId, clickable, title, release, index }: Props) => (
+const Thumb = ({
+  image,
+  movieId,
+  clickable,
+  title,
+  release,
+  index,
+  scale = 1,
+  height = "auto",
+}: Props) => (
   <>
     {clickable ? (
       <Link className="link" to={`/${movieId}`}>
@@ -23,7 +34,12 @@ const Thumb = ({ image, movieId, clickable, title, release, index }: Props) => (
           variants={fadeInThumbVariant}
           custom={index}
         >
-          <Image src={image} alt="movie-thumb" />
+          <Image
+            src={image}
+            alt="movie-thumb"
+            scale={scale as number}
+            height={height}
+          />
           {title && <h3>{title}</h3>}
           {release && <p>{formatReleaseDate(release as string)}</p>}
         </Wrapper>
@@ -35,7 +51,12 @@ const Thumb = ({ image, movieId, clickable, title, release, index }: Props) => (
         variants={fadeInThumbVariant}
         custom={index}
       >
-        <Image src={image} alt="movie-thumb" />
+        <Image
+          src={image}
+          alt="movie-thumb"
+          scale={scale as number}
+          loading="lazy"
+        />
         {title && <h3>{title}</h3>}
         {release && <p>{formatReleaseDate(release as string)}</p>}
       </Wrapper>
