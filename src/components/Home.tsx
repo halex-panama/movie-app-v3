@@ -46,7 +46,7 @@ const Home = () => {
           state.results.map((movie, index) => (
             <Thumb
               scale={1.05}
-              height="22.5rem"
+              // height="22.5rem"
               clickable
               image={
                 movie.poster_path

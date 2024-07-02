@@ -30,6 +30,7 @@ const MovieInfo = ({ movie }: Props) => (
             : NoImage
         }
         clickable={false}
+        movieInfo={true}
         scale={1}
       />
 

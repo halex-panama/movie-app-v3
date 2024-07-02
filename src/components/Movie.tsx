@@ -46,25 +46,6 @@ const Movie = () => {
         <div>No Trailer Found</div>
       )}
 
-      {/* <Grid header="Similar Movie">
-        {movie.similar &&
-          movie.similar.length > 0 &&
-          movie.similar.map((movie) => (
-            <Thumb
-              key={movie.id}
-              clickable
-              image={
-                movie.poster_path
-                  ? IMAGE_BASE_URL + POSTER_SIZE + movie.poster_path
-                  : NoImage
-              }
-              movieId={movie.id}
-              title={movie.title}
-              release={movie.release_date}
-            />
-          ))}
-      </Grid> */}
-
       <Slider header="Similar Movie" movie={movie.similar} />
 
       <Grid header="Cast">
