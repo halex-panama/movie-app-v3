@@ -2,7 +2,9 @@ import { Link } from "react-router-dom";
 import { fadeInThumbVariant, formatReleaseDate } from "../../helpers";
 
 //styles
-import { Image, Skeleton, Wrapper } from "./Thumb.styles";
+import { ImageContainer, Wrapper } from "./Thumb.styles";
+import { LazyLoadImage } from "react-lazy-load-image-component";
+import "react-lazy-load-image-component/src/effects/blur.css";
 import { useState } from "react";
 
 type Props = {
@@ -13,8 +15,6 @@ type Props = {
   release?: string;
   index?: number;
   scale?: number;
-  movieInfo?: boolean;
-  // height?: "22.5rem" | "auto";
 };
 
 const Thumb = ({
@@ -25,10 +25,8 @@ const Thumb = ({
   release,
   index,
   scale = 1,
-  movieInfo = false,
-}: // height = "auto",
-Props) => {
-  const [loadingImage, setLoadingImage] = useState(true);
+}: Props) => {
+  const [isLoaded, setIsLoaded] = useState(false);
   return (
     <>
       {clickable ? (
@@ -37,16 +35,19 @@ Props) => {
             initial="initial"
             whileInView="animate"
             variants={fadeInThumbVariant}
+            viewport={{ once: true }}
             custom={index}
           >
-            {loadingImage && <Skeleton movieInfo={movieInfo as boolean} />}
-            <Image
-              src={image}
-              alt="movie-thumb"
-              scale={scale as number}
-              onLoad={() => setLoadingImage(false)}
-              // height={height}
-            />
+            <ImageContainer scale={scale} isLoaded={isLoaded}>
+              <LazyLoadImage
+                src={image}
+                width={"100%"}
+                height={"100%"}
+                effect="blur"
+                className="lazy-img"
+                onLoad={() => setIsLoaded(true)}
+              />
+            </ImageContainer>
             {title && <h3>{title}</h3>}
             {release && <p>{formatReleaseDate(release as string)}</p>}
           </Wrapper>
@@ -56,16 +57,19 @@ Props) => {
           initial="initial"
           whileInView="animate"
           variants={fadeInThumbVariant}
+          viewport={{ once: true }}
           custom={index}
         >
-          {loadingImage && <Skeleton movieInfo={movieInfo as boolean} />}
-          <Image
-            src={image}
-            alt="movie-thumb"
-            scale={scale as number}
-            loading="lazy"
-            onLoad={() => setLoadingImage(false)}
-          />
+          <ImageContainer scale={scale} isLoaded={isLoaded}>
+            <LazyLoadImage
+              src={image}
+              width={"100%"}
+              height={"100%"}
+              effect="blur"
+              className="lazy-img"
+              onLoad={() => setIsLoaded(true)}
+            />
+          </ImageContainer>
           {title && <h3>{title}</h3>}
           {release && <p>{formatReleaseDate(release as string)}</p>}
         </Wrapper>

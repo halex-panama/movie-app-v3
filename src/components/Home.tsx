@@ -57,6 +57,7 @@ const Home = () => {
               title={movie.title}
               release={movie.release_date}
               index={index}
+              key={movie.id}
             />
           ))}
       </Grid>

@@ -14,6 +14,7 @@ const Actor = ({ name, character, imageUrl, index }: Props) => (
     initial="initial"
     whileInView="animate"
     variants={fadeInThumbVariant}
+    viewport={{ once: true }}
     custom={index}
   >
     <Image src={imageUrl} alt="actor-thumb" />
